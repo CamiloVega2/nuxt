@@ -32,7 +32,7 @@ export default {
             this.count = data.count;
         },
         async getImages() {
-            for (let i = 1; i < 21; i++) {
+            for (let i = 1; i < 500; i++) {
                 let datos = await this.$axios.get(`pokemon/${i}`);
                 this.poke.url = datos.data.sprites.other.home.front_default;
                 this.poke.name = datos.data.name;

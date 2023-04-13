@@ -1,12 +1,11 @@
 <template>
-    <div>
+    <div style="background-image: url('https://tiermaker.com/images/templates/3904221589914255.jpg');" class="bg-auto bg-no-repeat bg-center">
         <loading v-if="loading" />
         <div class="h-screen">
             <div class="flex justify-center text-4xl">
                 <p>{{ nombre.toUpperCase() }}</p>
             </div>
-            <div class=" flex flex-col justify-center mx-[5%] h-[1/2]"
-                style="background: linear-gradient(90deg, rgba(255,0,0,1) 45%, rgba(0,0,0,1) 47%, rgba(255,255,255,1) 49%);">
+            <div class=" flex flex-col justify-center mx-[5%]">
                 <div class="flex justify-center">
                     <img :src="img1" class="h-[250px] w-[250px]">
                     <img :src="img2" class="h-[250px] w-[250px]">
@@ -16,12 +15,12 @@
                     <img :src="img4" class="h-[250px] w-[250px]">
                 </div>
                 <div class="flex  flex-col items-center">
-                    <p>HP{{ hp }}</p>
-                    <p>ATTACK{{ attack }}</p>
-                    <p>DEFENSE{{ defense }}</p>
-                    <p>ATTACKSPECIAL{{ attackspcl }}</p>
-                    <p>DEFENSESPECIAL{{ defensespcl }}</p>
-                    <p>SPEED{{ speed }}</p>
+                    <p>HP: {{ hp }}</p>
+                    <p>ATTACK: {{ attack }}</p>
+                    <p>DEFENSE: {{ defense }}</p>
+                    <p>ATTACKSPECIAL: {{ attackspcl }}</p>
+                    <p>DEFENSESPECIAL: {{ defensespcl }}</p>
+                    <p>SPEED: {{ speed }}</p>
                 </div>
             </div>
         </div>
@@ -43,6 +42,7 @@ export default {
             attackspcl: "",
             defensespcl: "",
             speed: "",
+            type:"",
             loading: true
         }
     },
@@ -64,6 +64,7 @@ export default {
             this.attackspcl = information.data.stats[3].base_stat
             this.defensespcl = information.data.stats[4].base_stat
             this.speed = information.data.stats[5].base_stat
+            this.type = information.data.types[0].name
             this.loading = false
         }
     },
