@@ -1,14 +1,13 @@
 <template>
 <div>
-  <Tutorial/>
+ <Loading/>
 </div>
 </template>
 
 <script>
-import Tutorial from '~/components/Tutorial.vue';
-
+import Loading from '~/components/loading.vue';
 export default {
     name: "IndexPage",
-    components: { Tutorial }
+    components: { Loading }
 };
 </script>

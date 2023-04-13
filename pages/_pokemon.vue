@@ -1,16 +1,28 @@
 <template>
-    <div class="h-screen">
-        <div class="flex justify-center text-4xl">
-            <p>{{ nombre.toUpperCase() }}</p>
-        </div>
-        <div class="h-[95%] flex flex-col justify-center mx-[5%]" style="background: linear-gradient(90deg, rgba(255,0,0,1) 45%, rgba(0,0,0,1) 47%, rgba(255,255,255,1) 49%);">
-            <div class="flex justify-center">
-                <img :src="img1" class="h-[250px] w-[250px]">
-                <img :src="img2" class="h-[250px] w-[250px]">
+    <div>
+        <loading v-if="loading" />
+        <div class="h-screen">
+            <div class="flex justify-center text-4xl">
+                <p>{{ nombre.toUpperCase() }}</p>
             </div>
-            <div class="flex justify-center">
-                <img :src="img3" class="h-[250px] w-[250px]">
-                <img :src="img4" class="h-[250px] w-[250px]">
+            <div class=" flex flex-col justify-center mx-[5%] h-[1/2]"
+                style="background: linear-gradient(90deg, rgba(255,0,0,1) 45%, rgba(0,0,0,1) 47%, rgba(255,255,255,1) 49%);">
+                <div class="flex justify-center">
+                    <img :src="img1" class="h-[250px] w-[250px]">
+                    <img :src="img2" class="h-[250px] w-[250px]">
+                </div>
+                <div class="flex justify-center">
+                    <img :src="img3" class="h-[250px] w-[250px]">
+                    <img :src="img4" class="h-[250px] w-[250px]">
+                </div>
+                <div class="flex  flex-col items-center">
+                    <p>HP{{ hp }}</p>
+                    <p>ATTACK{{ attack }}</p>
+                    <p>DEFENSE{{ defense }}</p>
+                    <p>ATTACKSPECIAL{{ attackspcl }}</p>
+                    <p>DEFENSESPECIAL{{ defensespcl }}</p>
+                    <p>SPEED{{ speed }}</p>
+                </div>
             </div>
         </div>
     </div>
@@ -25,6 +37,13 @@ export default {
             img2: "",
             img3: "",
             img4: "",
+            hp: "",
+            attack: "",
+            defense: "",
+            attackspcl: "",
+            defensespcl: "",
+            speed: "",
+            loading: true
         }
     },
     mounted() {
@@ -39,6 +58,13 @@ export default {
             this.img2 = information.data.sprites.back_default
             this.img3 = information.data.sprites.front_shiny
             this.img4 = information.data.sprites.back_shiny
+            this.hp = information.data.stats[0].base_stat
+            this.attack = information.data.stats[1].base_stat
+            this.defense = information.data.stats[2].base_stat
+            this.attackspcl = information.data.stats[3].base_stat
+            this.defensespcl = information.data.stats[4].base_stat
+            this.speed = information.data.stats[5].base_stat
+            this.loading = false
         }
     },
 }
